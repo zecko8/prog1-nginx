@@ -1,0 +1,20 @@
+pipeline {
+  agent any
+  stages{
+    stage('Download index'){
+      steps {
+        sh 'wget https://raw.githubusercontent.com/zecko8/prog1-nginx/main/index.html'
+      }
+    }
+    stage('RUN'){
+      steps {
+        sh 'docker run -d --name prog1 -p 8000:80 nginx'
+      }
+    }
+    stage('Docker CP'){
+      steps {
+        sh 'docker cp index.html prog1:/usr/share/nginx/html/index.html'
+      }
+    }
+  }
+}
