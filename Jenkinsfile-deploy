@@ -8,7 +8,7 @@ pipeline {
     }
     stage('CLEAN'){
       steps {
-        sh 'docker rm prog1'
+        sh 'docker rm -f prog1'
       }
     }
     stage('RUN'){
