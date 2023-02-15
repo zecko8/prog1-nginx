@@ -6,6 +6,11 @@ pipeline {
         sh 'wget https://raw.githubusercontent.com/zecko8/prog1-nginx/main/index.html'
       }
     }
+    stage('CLEAN'){
+      steps {
+        sh 'docker rm prog1'
+      }
+    }
     stage('RUN'){
       steps {
         sh 'docker run -d --name prog1 -p 8000:80 nginx'
